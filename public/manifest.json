@@ -1,0 +1,13 @@
+{
+    "short_name": "Trickyroad",
+    "name": "Trickyroad",
+    "icons": [
+      {
+        "src": "/img/iconapp.jpg",
+        "type": "image/jpg",
+        "sizes": "192x192"
+      }
+    ],
+    "display": "fullscreen",
+    "orientation": "portrait"
+  }
