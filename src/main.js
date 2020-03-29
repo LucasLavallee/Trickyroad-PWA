@@ -3,7 +3,10 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
+import { rtdbPlugin } from 'vuefire'
 
+
+Vue.use(rtdbPlugin)
 Vue.config.productionTip = false
 
 new Vue({

@@ -51,7 +51,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .home
     overflow hidden
   header
@@ -63,17 +63,16 @@ export default {
     width 80%
     box-sizing content-box
 
-  .icons
-    width 35px
-    height 35px
-
   #mainHome
     position fixed
     top 50%
-    transform translate3d(0,-50%,0)
+    left 50%
+    transform translate3d(-50%,-50%,0)
     display flex
     flex-direction column
     align-items center
+    width 100%
+    max-width 700px
 
     img 
       width 110%

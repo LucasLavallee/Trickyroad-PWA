@@ -14,6 +14,7 @@ html
   background-size cover
   height 100%
 
+
 #app
   font-family Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
@@ -21,4 +22,11 @@ html
   text-align center
   margin-top 60px
   color #fff
+
+.bold
+  font-weight bold
+
+.icons
+  width 35px
+  height 35px
 </style>

@@ -1,0 +1,67 @@
+{
+    "badgesCategory": [
+        {
+            "name": "Played games",
+            "badges": [
+                {
+                    "name": "5games",
+                    "filename": "5parties"
+                },
+                {
+                    "name": "10games",
+                    "filename": "10parties"
+                },
+                {
+                    "name": "30games",
+                    "filename": "30parties"
+                },
+                {
+                    "name": "50games",
+                    "filename": "50parties"
+                }
+            ]
+        },
+        {
+            "name":"Timer",
+            "badges": [
+                {
+                    "name": "30s",
+                    "filename": "30s"
+                },
+                {
+                    "name": "1min",
+                    "filename": "1min"
+                },
+                {
+                    "name": "2min",
+                    "filename": "2min"
+                },
+                {
+                    "name": "3min",
+                    "filename": "3min"
+                }
+            ]
+        },
+        {
+            "name":"Others",
+            "badges": [
+                {
+                    "name": "1stWin",
+                    "filename": "1st_victory"
+                },
+                {
+                    "name": "curious",
+                    "filename": "Curieux"
+                },
+                {
+                    "name": "gyroMode",
+                    "filename": "mode_gyro"
+                },
+                {
+                    "name": "touchMode",
+                    "filename": "mode_touch"
+                }
+            ]
+        }
+    ]
+}
