@@ -2,11 +2,7 @@ import {
   Scene,
   WebGLRenderer,
   PerspectiveCamera,
-  // BoxBufferGeometry,
-  // MeshBasicMaterial,
-  // Mesh,
   AmbientLight,
-  // Color,
   LoadingManager,
   MeshPhongMaterial,
   PointLight
@@ -30,15 +26,11 @@ export default class ThreeJsController {
     this.camera = new PerspectiveCamera(50, this.w / this.h, 0.1, 1000)
     this.renderer.setSize(this.w, this.h)
 
-    // this.geometry = new BoxBufferGeometry(1, 0.1, 1)
-    // this.material = new MeshBasicMaterial({ color: 0xf533e3, wireframe: false})
-    // this.map = new Mesh(this.geometry, this.material)
-    // this.scene.add(this.map)
     this.scene.add(new AmbientLight(0xffffff, 0.7))
     this.light = new PointLight(0xffffcc, 1, 50)
     this.light.position.set(5,7,-1)
     this.scene.add(this.light)
-    // this.scene.background = new Color(0xff000000)
+    
     this.camera.position.set(-1, 1.2, 3)
     this.camera.rotation.set(-Math.PI / 12, -Math.PI / 10, 0)
 

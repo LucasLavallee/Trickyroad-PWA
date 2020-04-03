@@ -31,6 +31,8 @@ export default {
   data() {
     return {
       threeJsController: null,
+      timeline: null,
+      nextPage: '',
       info: 'aaa'
     }
   },
@@ -41,22 +43,19 @@ export default {
   },
   methods: {
     goToGameMode() {
-      const self = this
-      this.fadeOut(() => {self.$router.push('gamemode')})
+      this.nextPage = 'gamemode'
+      this.timeline.timeScale(1.5).reverse()
     },
     goToProfile() {
-      this.$router.push('profile')
+      this.nextPage = 'profile'
+      this.timeline.timeScale(1.5).reverse()
     },
     goToLeaderboard() {
-      this.$router.push('leaderboard')
+      this.nextPage = 'leaderboard'
+      this.timeline.timeScale(1.5).reverse()
     },
-    fadeOut(callback) {
-      const fadeTimeline = gsap.timeline({onComplete: callback})
-      fadeTimeline.to('.icons_top', {y: -200, duration: 0.5}, 0.1)
-      fadeTimeline.to('.icons_bottom', {y: 200, duration: 0.4}, 0.2)
-      fadeTimeline.to('h1', {y: -500, duration: 0.3}, 0.3)
-      fadeTimeline.to('#playButton', {y: 500, duration: 0.2}, 0.4)
-      fadeTimeline.to(this.$refs.canvas, {scale: 0, duration: 0.1}, 0.5)
+    changeVue() {
+      this.$router.push(this.nextPage)
     }
   },
   components: {
@@ -64,13 +63,9 @@ export default {
   mounted() {
     this.threeJsController = new ThreeJsController(this.$refs.canvas)
     this.threeJsController.init(() => {
-      this.timeline = gsap.timeline()
-      this.timeline.to('.icons_top', {y: -200, duration: 0}, 0)
-      this.timeline.to('.icons_bottom', {y: 200, duration: 0}, 0)
-      this.timeline.to(this.$refs.canvas, {scale: 0, duration: 0}, 0)
-      this.timeline.to('h1', {y: -500, duration: 0}, 0)
-      this.timeline.to('#playButton', {y: 500, duration: 0}, 0)
-
+      this.timeline = gsap.timeline({
+        onReverseComplete: this.changeVue
+      })
       this.timeline.to('.icons_top', {y: 0, ease: 'back', stagger:{each: 0.05}, duration: 0.6}, 0.1)
       this.timeline.to('.icons_bottom', {y: 0, ease: 'back', stagger:{each: 0.05}, duration: 0.6}, 0.3)
       this.timeline.to('h1', {y: 0, ease: 'back', duration: 0.6}, 0.6)
@@ -95,6 +90,12 @@ export default {
   .icons
     cursor pointer
 
+  .icons_top
+    transform translateY(-200px)
+
+  .icons_bottom
+    transform translateY(200px)
+
   #mainHome
     position fixed
     top 50%
@@ -117,6 +118,7 @@ export default {
     width 50%
     border-radius 15px
     cursor pointer
+    transform translateY(500px)
 
     p
       margin 0
@@ -135,4 +137,6 @@ export default {
     img 
       padding 0 15px
 
+  h1
+    transform translateY(-500px)
 </style>
