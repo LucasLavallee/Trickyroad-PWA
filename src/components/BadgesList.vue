@@ -24,7 +24,7 @@ export default {
         }
     },
     created() {
-        console.log(this.badges)
+       // console.log(this.badges)
     }
 }
 </script>
