@@ -25,7 +25,7 @@
 </template>
 
 <script>
-// import db from '../../base'
+import db from '../../base'
 import BadgesList from '../components/BadgesList'
 import Ladder from '../components/Ladder'
 
@@ -62,7 +62,7 @@ export default {
         const user = this.$route.params.user
 
         if(user) {
-            /* db.ref('/users/' + user).once('value').then((snapshot) => {
+            db.ref('/users/' + user).once('value').then((snapshot) => {
                 const datas = snapshot.val()
                     let sortedByDate = datas.scores.sort((a, b) => {
                     const dateA = new Date(a.date)
@@ -79,7 +79,7 @@ export default {
                 })
                 this.lastScores = sortedByDate
                 this.badges = datas.badges ? datas.badges : []
-            }); */
+            });
         }
     }
 }

@@ -11,7 +11,7 @@
 
 <script>
 import Ladder from '../components/Ladder'
-// import db from '../../base'
+import db from '../../base'
 
 export default {
     name: 'leaderboard',
@@ -35,7 +35,7 @@ export default {
         }
     },
     firebase: {
-        // users: db.ref('users')
+        users: db.ref('users')
     },
     watch: {
         users: {
