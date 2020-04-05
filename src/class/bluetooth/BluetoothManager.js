@@ -20,7 +20,7 @@ export default class BluetoothManager {
           this._handleCharacteristicValueChanged.bind(this);
   
       serviceUuid = "7d1dbb39-53f4-4955-a5c9-ad521f4c985c"//0x1812//"6e400001-b5a3-f393-e0a9-e50e24dcca9e";
-      characteristicUuid  = 0x2A3D // "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
+      characteristicUuid  = 0x2A19 //0x2A3D // "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
       // Configure with specified parameters.
       this.setServiceUuid(serviceUuid);
       this.setCharacteristicUuid(characteristicUuid);
