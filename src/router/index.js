@@ -1,14 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+//import VueRouterMultiguard from 'vue-router-multiguard'
+//import store from '../store'
 
 Vue.use(VueRouter)
+
+/*const isLoggedIn = (to, from, next) => {
+  const user = store.state.playerInfo.pseudo
+  if(user) {
+    next()
+  }
+}*/
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    //beforeEnter: VueRouterMultiguard([isLoggedIn])
   },
   {
     path: '/about',
