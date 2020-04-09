@@ -12,8 +12,8 @@ import { OBJLoader } from '../loader/OBJLoader.js'
 
 export default class ThreeJsController {
   constructor(canvas) {
-    this.w = 598
-    this.h = 455
+    this.w = window.innerWidth
+    this.h = window.innerWidth * (455 / window.innerWidth )
     this.scene = new Scene()
 
     this.renderer = new WebGLRenderer({

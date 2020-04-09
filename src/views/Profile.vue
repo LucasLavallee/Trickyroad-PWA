@@ -7,11 +7,11 @@
         <section id="quickInfoContainer">
             <div class="quickInfo">
                 <h2>Best Score</h2>
-                <p class="bold">{{bestTime}}</p>
+                <p class="bold">{{bestTime ? bestTime : '--:--'}}</p>
             </div>
             <div class="quickInfo">
                 <h2>Last Game</h2>
-                <p class="bold">{{lastPlay}}</p>
+                <p class="bold">{{lastPlay ? lastPlay : '--/--'}}</p>
             </div>
         </section>
         <BadgesList 
@@ -41,7 +41,7 @@ export default {
             infos: null,
             bestTime: null,
             lastPlay: null,
-            lastScores: null,
+            lastScores: [],
             badges: null
         }
     },
@@ -64,20 +64,24 @@ export default {
         if(user) {
             db.ref('/users/' + user).once('value').then((snapshot) => {
                 const datas = snapshot.val()
+
+                if(datas.scores) {
                     let sortedByDate = datas.scores.sort((a, b) => {
-                    const dateA = new Date(a.date)
-                    const dateB = new Date(b.date)
-                    return dateB - dateA
-                })
+                        const dateA = new Date(a.date)
+                        const dateB = new Date(b.date)
+                        return dateB - dateA
+                    })
+
+                    sortedByDate.map(score => {
+                        score.rank = this.parseTime(score.date)
+                        score.value = this.parseScore(score.value)
+                    })
+                    this.lastScores = sortedByDate
+                }
 
                 this.infos = datas
-                this.bestTime = this.parseScore(datas.bestScore.value)
-                this.lastPlay = this.parseTime(datas.lastGame)
-                sortedByDate.map(score => {
-                    score.rank = this.parseTime(score.date)
-                    score.value = this.parseScore(score.value)
-                })
-                this.lastScores = sortedByDate
+                this.bestTime = datas.bestScore ? this.parseScore(datas.bestScore.value) : null
+                this.lastPlay = datas.lastGame ? this.parseTime(datas.lastGame) : null
                 this.badges = datas.badges ? datas.badges : []
             });
         }

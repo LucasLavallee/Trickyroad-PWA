@@ -38,7 +38,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getCurrentConfig'
+      'getCurrentConfig',
+      'getPseudo'
     ])
   },
   methods: {
@@ -47,7 +48,7 @@ export default {
       this.timeline.timeScale(1.5).reverse()
     },
     goToProfile() {
-      this.nextPage = 'profile'
+      this.nextPage = 'profile/' + this.getPseudo
       this.timeline.timeScale(1.5).reverse()
     },
     goToLeaderboard() {
