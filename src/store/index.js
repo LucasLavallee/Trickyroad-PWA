@@ -17,11 +17,17 @@ export default new Vuex.Store({
       sound: true,
     },
     bleManager: null,
-    achievementQueue: []
+    notificationQueue: []
   },
   mutations: {
     SET_PSEUDO (state, pseudo) {
       state.playerInfo.pseudo = pseudo
+    },
+    SET_BLE_MANAGER (state, manager) {
+      state.bleManager = manager
+    }, 
+    ADD_NOTIFICATION (state, notification) {
+      state.notificationQueue = [...state.notificationQueue, notification]
     }
   },
   actions: {
@@ -30,6 +36,9 @@ export default new Vuex.Store({
     },
     setBleManager: (store, manager) => {
       store.commit('SET_BLE_MANAGER', manager)
+    },
+    addNotification: (store, notification) => {
+      store.commit('ADD_NOTIFICATION', notification)
     }
   },
   getters: {

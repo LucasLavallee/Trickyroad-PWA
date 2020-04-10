@@ -29,6 +29,7 @@ html
 .icons
   width 35px
   height 35px
+  cursor pointer
 
 
 .exitIcon
@@ -40,7 +41,6 @@ html
   bottom 30px
   left 50%
   transform translate3d(-50%,0,0)
-  cursor pointer
 
 .centeredModal
   z-index 2

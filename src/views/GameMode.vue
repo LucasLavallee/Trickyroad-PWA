@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BluetoothManager from '../class/bluetooth/BluetoothManager'
+import BluetoothManager from '../class/manager/BluetoothManager'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {

@@ -51,10 +51,20 @@ export default {
         },
         startGame() {
             this.gameState = 'playing'
+            this.gameWon(200)
             this.interval = setInterval(() => {
                 this.currentTime++
                 this.displayedTime = this.parseTime(this.currentTime)
             }, 1000)
+        },
+        gameWon(score) {
+            this.$router.push({
+                path: '/result', 
+                query: {
+                    score: score,
+                    from: 'touchmode'
+                }
+            })
         },
         parseTime(time) {
             const min = Math.floor(time / 60) < 10 ? '0' + Math.floor(time / 60) : Math.floor(time / 60)

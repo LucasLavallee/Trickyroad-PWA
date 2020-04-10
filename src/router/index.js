@@ -44,40 +44,50 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: () => import('../views/About.vue')
+    component: () => import('../views/About.vue'),
+    beforeEnter: VueRouterMultiguard([isLoggedIn])
   },
   {
     path: '/gamemode',
     name: 'Gamemode',
-    component: () => import('../views/GameMode.vue')
+    component: () => import('../views/GameMode.vue'),
+    beforeEnter: VueRouterMultiguard([isLoggedIn])
   },
   {
     path: '/touchmode',
     name: 'Touchmode',
     component: () => import('../views/Touchmode.vue'),
-    beforeEnter: VueRouterMultiguard([bleManagerSet])
+    beforeEnter: VueRouterMultiguard([isLoggedIn, bleManagerSet])
   },
   {
     path: '/gyromode',
     name: 'Gyromode',
     component: () => import('../views/Gyromode.vue'),
-    beforeEnter: VueRouterMultiguard([bleManagerSet])
+    beforeEnter: VueRouterMultiguard([isLoggedIn, bleManagerSet])
   },
   {
     path: '/leaderboard',
     name: 'Leaderboard',
-    component: () => import('../views/Leaderboard.vue')
+    component: () => import('../views/Leaderboard.vue'),
+    beforeEnter: VueRouterMultiguard([isLoggedIn])
   },
   {
     path: '/profile/:user',
     name: 'Profile',
-    component: () => import('../views/Profile.vue')
+    component: () => import('../views/Profile.vue'),
+    beforeEnter: VueRouterMultiguard([isLoggedIn])
   },
   {
     path: '/firstConnection',
     name: 'FirstConnection',
     component: () => import('../views/FirstConnection.vue'),
     beforeEnter: VueRouterMultiguard([alreadyLog])
+  },
+  {
+    path: '/result',
+    name: 'Result',
+    component: () => import('../views/Result.vue'),
+    beforeEnter: VueRouterMultiguard([isLoggedIn])
   }
 ]
 

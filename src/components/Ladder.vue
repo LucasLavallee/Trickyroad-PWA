@@ -1,13 +1,13 @@
 <template>
     <div id="ladder">
-        <div :class="score.user === getPseudo ? 'ladderEntry currentUser': 'ladderEntry'" v-for="(score, index) in scores" :key="index" @click="navigateTo('profile', score.user)">
+        <div :class="score.endGame ? 'ladderEntry currentScore currentUser' : (score.user === getPseudo ? 'ladderEntry currentUser': 'ladderEntry')" v-for="(score, index) in scores" :key="index" @click="navigateTo('profile', score.user)">
             <p>{{score.rank}}</p>
             <p class="bold">{{score.user}}</p>
             <p>{{score.value}}</p>
         </div>
 
         <div class="noGame" v-if="scores.length === 0">
-            <p>No game found ...</p>
+            <p>No result found ...</p>
         </div>
     </div>
 </template>
@@ -46,4 +46,7 @@ export default {
 
     .currentUser
         color #e9ff00
+
+    .currentScore
+        border 2px solid #fff
 </style>
