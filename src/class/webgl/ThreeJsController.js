@@ -8,7 +8,7 @@ import {
   PointLight
 } from 'three'
 
-import { OBJLoader } from '../loader/OBJLoader.js'
+import { OBJLoader } from './loader/OBJLoader.js'
 
 export default class ThreeJsController {
   constructor(canvas) {
@@ -42,16 +42,16 @@ export default class ThreeJsController {
       self.mouse.x = e.clientX
       self.mouse.y = e.clientY
     })
-    window.addEventListener("devicemotion", (e) => {
+    /*window.addEventListener("devicemotion", (e) => {
       self.gyro.x = e.alpha
       self.gyro.y = e.beta
       self.gyro.z = e.gamma
-    })
-    window.addEventListener("touchmove", (e) => {
+    })*/
+    /*window.addEventListener("touchmove", (e) => {
       self.mouse.x = e.changedTouches[0].pageX
       self.mouse.y = e.changedTouches[0].pageY
       e.preventDefault()
-    })
+    })*/
     /* window.addEventListener("touchdown", (e) => {
       self.mouse.x = e.changedTouches[0].pageX
       self.mouse.y = e.changedTouches[0].pageY
@@ -97,6 +97,18 @@ export default class ThreeJsController {
       }
     }
   }
+
+  setMouse(newVal) {
+    this.mouse.x = newVal.x
+    this.mouse.y = newVal.y
+  }
+
+  setGyro(newVal) {
+    this.gyro.x = newVal.alpha
+    this.gyro.y = newVal.beta
+    this.gyro.z = newVal.gamma
+  }
+
   render () {
     this.t++
     this.renderer.render(this.scene, this.camera)

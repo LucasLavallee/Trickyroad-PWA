@@ -16,6 +16,7 @@ export default new Vuex.Store({
     config: {
       sound: true,
     },
+    bleManager: null,
     achievementQueue: []
   },
   mutations: {
@@ -26,11 +27,15 @@ export default new Vuex.Store({
   actions: {
     setPseudo: (store, pseudo) => {
       store.commit('SET_PSEUDO', pseudo)
+    },
+    setBleManager: (store, manager) => {
+      store.commit('SET_BLE_MANAGER', manager)
     }
   },
   getters: {
     getCurrentConfig: state => state.config,
-    getPseudo: state => state.playerInfo.pseudo
+    getPseudo: state => state.playerInfo.pseudo,
+    getBleManager: state => state.bleManager
   },
   modules: {
   }

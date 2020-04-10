@@ -23,7 +23,7 @@
 <script>
 // @ is an alias to /src
 import { mapGetters } from 'vuex'
-import ThreeJsController from './ThreeJsController'
+import ThreeJsController from '../class/webgl/ThreeJsController'
 import gsap from 'gsap'
 
 export default {

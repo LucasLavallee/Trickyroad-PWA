@@ -24,6 +24,16 @@ const alreadyLog = (to, from, next) => {
   }
 }
 
+const bleManagerSet = (to, from, next) => {
+  const bleManager = store.state.bleManager
+  if(bleManager) {
+    next()
+  } else {
+    next()
+    //next('/gamemode')
+  }
+}
+
 const routes = [
   {
     path: '/',
@@ -44,12 +54,14 @@ const routes = [
   {
     path: '/touchmode',
     name: 'Touchmode',
-    component: () => import('../views/Touchmode.vue')
+    component: () => import('../views/Touchmode.vue'),
+    beforeEnter: VueRouterMultiguard([bleManagerSet])
   },
   {
     path: '/gyromode',
     name: 'Gyromode',
-    component: () => import('../views/Gyromode.vue')
+    component: () => import('../views/Gyromode.vue'),
+    beforeEnter: VueRouterMultiguard([bleManagerSet])
   },
   {
     path: '/leaderboard',

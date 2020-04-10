@@ -5,7 +5,7 @@
         <Ladder
             :scores="scores"
         />
-        <img src="../assets/icons/home.png" alt="backHome" class="icons exitIcon" id="backHome" @click="$router.push('/')">
+        <img src="../assets/icons/home.png" alt="backHome" class="icons exitIcon" @click="$router.push('/')">
     </div>
 </template>
 
@@ -74,12 +74,4 @@ export default {
         border-radius 15px
         border none
 
-    .exitIcon
-        background rgba(255,255,255,0.8)
-        border-radius 50px
-        padding 10px
-        position fixed
-        bottom 30px
-        left 50%
-        transform translate3d(-50%,0,0)
 </style>
