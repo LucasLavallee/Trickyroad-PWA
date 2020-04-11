@@ -2,66 +2,65 @@
     "badgesCategory": [
         {
             "name": "Played games",
-            "badges": [
-                {
-                    "name": "5games",
-                    "filename": "5parties"
-                },
-                {
-                    "name": "10games",
-                    "filename": "10parties"
-                },
-                {
-                    "name": "30games",
-                    "filename": "30parties"
-                },
-                {
-                    "name": "50games",
-                    "filename": "50parties"
-                }
-            ]
+            "badges": ["5games", "10games", "30games", "50games"]
         },
         {
             "name":"Timer",
-            "badges": [
-                {
-                    "name": "30s",
-                    "filename": "30s"
-                },
-                {
-                    "name": "1min",
-                    "filename": "1min"
-                },
-                {
-                    "name": "2min",
-                    "filename": "2min"
-                },
-                {
-                    "name": "3min",
-                    "filename": "3min"
-                }
-            ]
+            "badges": ["30s", "1min", "2min","3min"]
         },
         {
             "name":"Others",
-            "badges": [
-                {
-                    "name": "1stWin",
-                    "filename": "1st_victory"
-                },
-                {
-                    "name": "curious",
-                    "filename": "Curieux"
-                },
-                {
-                    "name": "gyroMode",
-                    "filename": "mode_gyro"
-                },
-                {
-                    "name": "touchMode",
-                    "filename": "mode_touch"
-                }
-            ]
+            "badges": ["1stWin", "curious", "gyroMode", "touchMode"]
         }
-    ]
+    ],
+    "badgesDetails": {
+        "5games": {
+            "filename": "5parties",
+            "descr": "Win 5 games"
+        },
+        "10games": {
+            "filename": "10parties",
+            "descr": "Win 10 games"
+        },
+        "30games": {
+            "filename": "30parties",
+            "descr": "Win 30 games"
+        },
+        "50games": {
+            "filename": "50parties",
+            "descr": "Win 50 games"
+        },
+        "30s": {
+            "filename": "30s",
+            "descr": "Finish in less than 30s"
+        },
+        "1min": {
+            "filename": "1min",
+            "descr": "Finish in less than 1min"
+        },
+        "2min": {
+            "filename": "2min",
+            "descr": "Finish in less than 2min"
+        },
+        "3min": {
+            "filename": "3min",
+            "descr": "Finish in less than 3min"
+        },
+        "1stWin": {
+            "filename": "1st_victory",
+            "descr": "First win"
+        },
+        "curious": {
+            "filename": "Curieux",
+            "descr": "Curious"
+        },
+        "gyroMode": {
+            "filename": "mode_gyro",
+            "descr": "Win a game with gyroscope"
+        },
+        "touchMode": {
+            "filename": "mode_touch",
+            "descr": "Win a game with touch mode"
+        }
+    }
 }

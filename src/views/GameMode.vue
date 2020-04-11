@@ -20,6 +20,7 @@
 <script>
 import BluetoothManager from '../class/manager/BluetoothManager'
 import { mapGetters, mapActions } from 'vuex'
+import Notification from '../class/model/Notification'
 
 export default {
     name: 'GameMode',
@@ -31,10 +32,13 @@ export default {
     },
     methods: {
         goTouchMode() {
-            this.$router.push('touchmode')
+            //this.$router.push('touchmode')
+            this.getNotificationManager.addNotification(new Notification('success', 'Score saved', 'Your score has been saved'))
         },
         goGyroMode() {
-            this.$router.push('gyromode')
+            //this.$router.push('gyromode')
+            this.getNotificationManager.addNotification(new Notification('error', 'Score saved', 'Your score has been saved'))
+        
         },       
         connectToESP() {
             this.bleManager.connect()
@@ -61,7 +65,8 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'getBleManager'
+            'getBleManager',
+            'getNotificationManager'
         ])
     }
 }

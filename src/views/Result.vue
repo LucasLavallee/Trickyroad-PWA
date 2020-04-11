@@ -24,6 +24,7 @@
 import Ladder from '../components/Ladder'
 import db from '../../base'
 import { mapGetters } from 'vuex'
+import Notification from '../class/model/Notification'
 
 export default {
     name: 'Result',
@@ -75,8 +76,10 @@ export default {
             }
             db.ref().update(updates,(error) => {
                 if (error) {
-                    console.log(error)
+                    this.getNotificationManager.addNotification(new Notification('error', 'Error on save', 'Your score hasn\'t been saved'))
+                    this.$router.push('/')
                 } else {
+                    this.getNotificationManager.addNotification(new Notification('success', 'Score saved', 'Your score has been saved'))
                     this.$router.push('/')
                 }
             })
@@ -88,7 +91,8 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'getPseudo'
+            'getPseudo',
+            'getNotificationManager'
         ])
     },
     firebase: {

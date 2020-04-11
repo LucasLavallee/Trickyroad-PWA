@@ -5,8 +5,20 @@
       <router-link to="/about">About</router-link>
     </div>-->
     <router-view/>
+    <NotificationContainer />
   </div>
 </template>
+
+<script>
+import NotificationContainer from './components/notification/NotificationContainer'
+
+export default {
+  name: 'App',
+  components: {
+    NotificationContainer
+  }
+}
+</script>
 
 <style lang="stylus">
 html
