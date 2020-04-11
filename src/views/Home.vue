@@ -39,7 +39,8 @@ export default {
   computed: {
     ...mapGetters([
       'getCurrentConfig',
-      'getPseudo'
+      'getPseudo',
+      'getAchievements'
     ])
   },
   methods: {
@@ -62,6 +63,8 @@ export default {
   components: {
   },
   mounted() {
+
+            console.log(this.getAchievements)
     this.threeJsController = new ThreeJsController(this.$refs.canvas)
     this.threeJsController.init(() => {
       this.timeline = gsap.timeline({

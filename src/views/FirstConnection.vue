@@ -18,6 +18,7 @@
 
 import db from '../../base'
 import { mapActions } from 'vuex'
+import AchievementManager from '../class/manager/AchievementManager'
 
 export default {
     name: "FirstConnection",
@@ -31,19 +32,22 @@ export default {
         savePseudo() {
             const pseudo = this.$refs.pseudoInput.value
             if(pseudo != '' && !this.existingUsers.includes(pseudo)) {
-                db.ref(`users/${pseudo}`).set({
-                    badges: ['firstConnection']
+                const badges = AchievementManager.getAllSerializeAchievements()
+                db.ref(`usersPWA/${pseudo}`).set({
+                    badges: badges
                 })
                 this.setPseudo(pseudo)
+                this.setAchievements(badges)
                 this.$router.push('/')
             }
         },
         ...mapActions([
-            'setPseudo'
+            'setPseudo',
+            'setAchievements'
         ])
     },
     firebase: {
-        users: db.ref('users')
+        users: db.ref('usersPWA')
     },
     watch: {
         users: {

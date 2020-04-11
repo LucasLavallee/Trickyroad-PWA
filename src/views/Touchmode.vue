@@ -51,18 +51,19 @@ export default {
         },
         startGame() {
             this.gameState = 'playing'
-            this.gameWon(200)
+            this.gameEnd(200,true)
             this.interval = setInterval(() => {
                 this.currentTime++
                 this.displayedTime = this.parseTime(this.currentTime)
             }, 1000)
         },
-        gameWon(score) {
+        gameEnd(score, win) {
             this.$router.push({
                 path: '/result', 
                 query: {
                     score: score,
-                    from: 'touchmode'
+                    from: 'touchmode',
+                    win: win
                 }
             })
         },

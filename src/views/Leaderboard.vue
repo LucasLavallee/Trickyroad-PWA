@@ -35,7 +35,7 @@ export default {
         }
     },
     firebase: {
-        users: db.ref('users')
+        users: db.ref('usersPWA')
     },
     watch: {
         users: {

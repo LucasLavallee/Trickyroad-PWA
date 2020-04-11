@@ -10,7 +10,8 @@ export default class Notification {
         return {
             type: this.type,
             title: this.title,
-            message: this.message
+            message: this.message,
+            data: this.data
         }
     }
 }

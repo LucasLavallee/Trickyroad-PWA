@@ -1,5 +1,6 @@
 <template>
     <div id="notification" :class="data.type">
+        <img v-if="data.type === 'achievement'" :src="`/badges/${data.data}.png`">
         <div>
             <h1>{{data.title}}</h1>
             <p>{{data.message}}</p>
@@ -49,18 +50,25 @@ export default {
         background rgba(0,0,0,0.6)
         display flex
         text-align center
-        justify-content center
+        justify-content space-around
+        align-items center
 
         &.error
             border 4px solid #c72a1b
+            justify-content center
 
         &.success
             border 4px solid #00a655
+            justify-content center
 
         h1
             font-size 1.2em
 
         p 
             margin-top 0
+
+        img
+            width 60px
+            height 60px
 
 </style>

@@ -62,7 +62,7 @@ export default {
         const user = this.$route.params.user
 
         if(user) {
-            db.ref('/users/' + user).once('value').then((snapshot) => {
+            db.ref('/usersPWA/' + user).once('value').then((snapshot) => {
                 const datas = snapshot.val()
 
                 if(datas.scores) {

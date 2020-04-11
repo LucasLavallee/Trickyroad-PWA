@@ -7,12 +7,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   plugins: [createPersistedState({
-    paths: ['playerInfo', 'config']
+    paths: ['playerInfo', 'config', 'achievements']
   })],
   state: {
     playerInfo: {
-      pseudo: null
+      pseudo: null,
+      games: null
     },
+    achievements: null,
     config: {
       sound: true,
     },
@@ -28,6 +30,9 @@ export default new Vuex.Store({
     },
     SET_NOTIFICATION_MANAGER (state, manager) {
       state.notificationManager = manager
+    },
+    SET_ACHIEVEMENTS (state, achievements) {
+      state.achievements = achievements
     }
   },
   actions: {
@@ -39,13 +44,18 @@ export default new Vuex.Store({
     },
     setNotificationManager: (store, manager) => {
       store.commit('SET_NOTIFICATION_MANAGER', manager)
+    },
+    setAchievements: (store, achievements) => {
+      store.commit('SET_ACHIEVEMENTS', achievements)
     }
   },
   getters: {
     getCurrentConfig: state => state.config,
     getPseudo: state => state.playerInfo.pseudo,
     getBleManager: state => state.bleManager,
-    getNotificationManager: state => state.notificationManager
+    getNotificationManager: state => state.notificationManager,
+    getAchievements: state => state.achievements,
+    getGames: state => state.playerInfo.games
   },
   modules: {
   }

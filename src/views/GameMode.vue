@@ -21,6 +21,8 @@
 import BluetoothManager from '../class/manager/BluetoothManager'
 import { mapGetters, mapActions } from 'vuex'
 import Notification from '../class/model/Notification'
+//import AchievementManager from '../class/manager/AchievementManager'
+//import store from '../store'
 
 export default {
     name: 'GameMode',
@@ -32,8 +34,11 @@ export default {
     },
     methods: {
         goTouchMode() {
-            //this.$router.push('touchmode')
-            this.getNotificationManager.addNotification(new Notification('success', 'Score saved', 'Your score has been saved'))
+            this.$router.push('touchmode')
+            //this.setAchievements(AchievementManager.getAllSerializeAchievements())
+            //console.log(AchievementManager.processAchievement('time', null, 50))
+            //AchievementManager.processAchievement('time', null, 50)
+            //console.log(this.getAchievements)
         },
         goGyroMode() {
             //this.$router.push('gyromode')
@@ -52,7 +57,8 @@ export default {
             this.isConnected = true
         },
         ...mapActions([
-            'setBleManager'
+            'setBleManager',
+            'setAchievements'
         ])
     },
     mounted() {
@@ -66,7 +72,8 @@ export default {
     computed: {
         ...mapGetters([
             'getBleManager',
-            'getNotificationManager'
+            'getNotificationManager',
+            'getAchievements'
         ])
     }
 }

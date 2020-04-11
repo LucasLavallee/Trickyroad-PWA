@@ -16,51 +16,75 @@
     "badgesDetails": {
         "5games": {
             "filename": "5parties",
-            "descr": "Win 5 games"
+            "descr": "Win 5 games",
+            "type": "count",
+            "condition": 5
         },
         "10games": {
             "filename": "10parties",
-            "descr": "Win 10 games"
+            "descr": "Win 10 games",
+            "type": "count",
+            "condition": 10
         },
         "30games": {
             "filename": "30parties",
-            "descr": "Win 30 games"
+            "descr": "Win 30 games",
+            "type": "count",
+            "condition": 30
         },
         "50games": {
             "filename": "50parties",
-            "descr": "Win 50 games"
+            "descr": "Win 50 games",
+            "type": "count",
+            "condition": 50
         },
         "30s": {
             "filename": "30s",
-            "descr": "Finish in less than 30s"
+            "descr": "Finish in less than 30s",
+            "type": "time",
+            "condition": 30
         },
         "1min": {
             "filename": "1min",
-            "descr": "Finish in less than 1min"
+            "descr": "Finish in less than 1min",
+            "type": "time",
+            "condition": 60
         },
         "2min": {
             "filename": "2min",
-            "descr": "Finish in less than 2min"
+            "descr": "Finish in less than 2min",
+            "type": "time",
+            "condition": 120
         },
         "3min": {
             "filename": "3min",
-            "descr": "Finish in less than 3min"
+            "descr": "Finish in less than 3min",
+            "type": "time",
+            "condition": 180
         },
         "1stWin": {
             "filename": "1st_victory",
-            "descr": "First win"
+            "descr": "First win",
+            "type": "toggle",
+            "condition": true
         },
         "curious": {
             "filename": "Curieux",
-            "descr": "Curious"
+            "descr": "Curious",
+            "type": "toggle",
+            "condition": true
         },
         "gyroMode": {
             "filename": "mode_gyro",
-            "descr": "Win a game with gyroscope"
+            "descr": "Win a game with gyroscope",
+            "type": "count",
+            "condition": 1
         },
         "touchMode": {
             "filename": "mode_touch",
-            "descr": "Win a game with touch mode"
+            "descr": "Win a game with touch mode",
+            "type": "count",
+            "condition": 1
         }
     }
 }

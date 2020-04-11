@@ -23,8 +23,9 @@
 <script>
 import Ladder from '../components/Ladder'
 import db from '../../base'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Notification from '../class/model/Notification'
+import AchievementManager from '../class/manager/AchievementManager'
 
 export default {
     name: 'Result',
@@ -57,7 +58,7 @@ export default {
 
             //Updating current player on firebase
             let updates = {}
-            updates[`users/${pseudo}`] = {
+            updates[`usersPWA/${pseudo}`] = {
                 scores: [
                     ...userScores,
                     {
@@ -84,10 +85,35 @@ export default {
                 }
             })
             
-        }
+        },
+        processAchievement() {
+            if(this.win) {
+                console.log('processsiiiinnnngg')
+                this.setAchievements(AchievementManager.processAchievement('time', null, this.$route.query.score))
+
+                this.setAchievements(AchievementManager.processAchievement('count', '5games', this.$route.query.score))
+                this.setAchievements(AchievementManager.processAchievement('count', '10games', this.$route.query.score))
+                this.setAchievements(AchievementManager.processAchievement('count', '30games', this.$route.query.score))
+                this.setAchievements(AchievementManager.processAchievement('count', '50games', this.$route.query.score))
+
+                this.setAchievements(AchievementManager.processAchievement('toggle', '1stWin', true))
+
+                if(this.$route.query.from === 'gyromode') 
+                    this.setAchievements(AchievementManager.processAchievement('count', 'gyroMode', true))
+
+                if(this.$route.query.from === 'touchmode') 
+                    this.setAchievements(AchievementManager.processAchievement('count', 'touchMode', true))
+
+            }
+        },
+        ...mapActions([
+            'setAchievements'
+        ])
     },
     mounted() {
         this.score = this.parseTime(this.$route.query.score)
+        this.win = !!this.$route.query.win
+        this.processAchievement()
     },
     computed: {
         ...mapGetters([
@@ -96,7 +122,7 @@ export default {
         ])
     },
     firebase: {
-        users: db.ref('users')
+        users: db.ref('usersPWA')
     },
     watch: {
         users: {
