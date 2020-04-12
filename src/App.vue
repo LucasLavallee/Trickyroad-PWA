@@ -11,11 +11,20 @@
 
 <script>
 import NotificationContainer from './components/notification/NotificationContainer'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
     NotificationContainer
+  },
+  methods: {
+  },
+  mounted() {
+  },
+  computed: {
+    ...mapGetters([
+    ])
   }
 }
 </script>

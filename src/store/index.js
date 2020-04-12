@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   plugins: [createPersistedState({
-    paths: ['playerInfo', 'config', 'achievements']
+    paths: ['playerInfo', 'config', 'achievements', 'updateDatas']
   })],
   state: {
     playerInfo: {
@@ -19,7 +19,13 @@ export default new Vuex.Store({
       sound: true,
     },
     bleManager: null,
-    notificationManager: null
+    notificationManager: null,
+    updateDatas: {
+      needPushUpdate: {
+        achievements: false,
+        games: false
+      }
+    }
   },
   mutations: {
     SET_PSEUDO (state, pseudo) {
@@ -30,6 +36,9 @@ export default new Vuex.Store({
     },
     SET_NOTIFICATION_MANAGER (state, manager) {
       state.notificationManager = manager
+    },
+    SET_PUSH_ACHIEVEMENT (state, needPush) {
+      state.updateDatas.needPushUpdate.achievements = needPush
     },
     SET_ACHIEVEMENTS (state, achievements) {
       state.achievements = achievements
@@ -47,6 +56,9 @@ export default new Vuex.Store({
     },
     setAchievements: (store, achievements) => {
       store.commit('SET_ACHIEVEMENTS', achievements)
+    },
+    setPushAchievement: (store, needPush) => {
+      store.commit('SET_PUSH_ACHIEVEMENT', needPush)
     }
   },
   getters: {
@@ -55,7 +67,8 @@ export default new Vuex.Store({
     getBleManager: state => state.bleManager,
     getNotificationManager: state => state.notificationManager,
     getAchievements: state => state.achievements,
-    getGames: state => state.playerInfo.games
+    getGames: state => state.playerInfo.games,
+    getPushUpdateRequest: state => state.updateDatas.needPushUpdate
   },
   modules: {
   }

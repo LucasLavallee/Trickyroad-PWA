@@ -22,9 +22,10 @@
 
 <script>
 // @ is an alias to /src
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import ThreeJsController from '../class/webgl/ThreeJsController'
 import gsap from 'gsap'
+import UpdateManager from '../class/manager/UpdateManager'
 
 export default {
   name: 'Home',
@@ -58,13 +59,24 @@ export default {
     },
     changeVue() {
       this.$router.push(this.nextPage)
-    }
+    },
+    ...mapActions([
+        'setUpdateManager',
+        'setPushAchievement'
+    ])
   },
   components: {
   },
   mounted() {
+    if(navigator.onLine) {
+      UpdateManager.pushAchievementsUpdate()
+        .then(() => {
+            this.setPushAchievement(false)
+        }).catch((error) => {
+            console.error("Write failed: "+error)
+        })
+    }
 
-            console.log(this.getAchievements)
     this.threeJsController = new ThreeJsController(this.$refs.canvas)
     this.threeJsController.init(() => {
       this.timeline = gsap.timeline({

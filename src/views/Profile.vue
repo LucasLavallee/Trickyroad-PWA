@@ -64,7 +64,7 @@ export default {
         if(user) {
             db.ref('/usersPWA/' + user).once('value').then((snapshot) => {
                 const datas = snapshot.val()
-
+                
                 if(datas.scores) {
                     let sortedByDate = datas.scores.sort((a, b) => {
                         const dateA = new Date(a.date)

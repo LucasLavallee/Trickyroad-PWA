@@ -3,11 +3,6 @@ import store from '../../store'
 
 export default class UpdateManager {
     constructor() {
-        this.status = 'pending'
-        this.needPushUpdate = {
-            achievements: false,
-            games: false
-        }
     }
 
     static isConnected() {
@@ -25,32 +20,28 @@ export default class UpdateManager {
         Pushing updates
     */
 
-    // Push all cached updates
-    pushUpdate () {
-        this.pushAchievementsUpdate()
-        this.pushGamesUpdate()
-    }
 
     //Push cached achievements updates
-    pushAchievementsUpdate () {
+    static async pushAchievementsUpdate () {
+        const currentPushRequest = store.getters.getPushUpdateRequest
+
+        if(!currentPushRequest.achievements) return
         if(!UpdateManager.isConnected()) {return}
         const pseudo = store.getters.getPseudo
         const achievements = store.getters.getAchievements
 
         let updates = {}
         updates[`usersPWA/${pseudo}/badges`] = achievements
-        db.ref().update(updates,(error) => {
-            if (error) {
-                console.log(error)
-            } else {
-                console.log('success')
-            }
-        })
+        const res = await db.ref().update(updates)
+
+        return res
     }
 
     // Push cached games updates
-    pushGamesUpdate () {
+    static pushGamesUpdate () {
+        const currentPushRequest = store.getters.getPushUpdateRequest
 
+        if(!currentPushRequest.games) return
     }
 
     /*
@@ -58,14 +49,12 @@ export default class UpdateManager {
     */
 
     // Pull all firebase updates
-    pullUpdate () {
+    static pullUpdate () {
         this.pullLeaderboardUpdate()
-
-        this.setLastUpdateTime(true, true)
     }
 
     //Pull firebase leaderboard updates
-    pullLeaderboardUpdate () {
+    static pullLeaderboardUpdate () {
 
         this.setLastUpdateTime(true, false)
     }

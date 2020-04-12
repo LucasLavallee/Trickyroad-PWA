@@ -38,7 +38,7 @@ export default {
         }
 
         const notifManager = new NotificationManager()
-        this.setNotificationManager(notifManager)
+        this.setNotificationManager(notifManager)   
     }
 }
 </script>

@@ -26,6 +26,7 @@ import db from '../../base'
 import { mapGetters, mapActions } from 'vuex'
 import Notification from '../class/model/Notification'
 import AchievementManager from '../class/manager/AchievementManager'
+import UpdateManager from '../class/manager/UpdateManager'
 
 export default {
     name: 'Result',
@@ -88,7 +89,6 @@ export default {
         },
         processAchievement() {
             if(this.win) {
-                console.log('processsiiiinnnngg')
                 this.setAchievements(AchievementManager.processAchievement('time', null, this.$route.query.score))
 
                 this.setAchievements(AchievementManager.processAchievement('count', '5games', this.$route.query.score))
@@ -104,10 +104,19 @@ export default {
                 if(this.$route.query.from === 'touchmode') 
                     this.setAchievements(AchievementManager.processAchievement('count', 'touchMode', true))
 
+                this.setPushAchievement(true)
+                UpdateManager.pushAchievementsUpdate()
+                    .then(() => {
+                        this.setPushAchievement(false)
+                    }).catch((error) => {
+                        console.error("Write failed: "+error)
+                    });
+
             }
         },
         ...mapActions([
-            'setAchievements'
+            'setAchievements',
+            'setPushAchievement'
         ])
     },
     mounted() {
