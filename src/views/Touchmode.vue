@@ -38,13 +38,17 @@ export default {
     },
     methods: {
         addWindowListeners() {
-            window.addEventListener("touchmove", (e) => {
-                e.preventDefault()
-                this.threeJsController.setMouse({
-                    x: e.changedTouches[0].pageX, 
-                    y: e.changedTouches[0].pageY
-                })  
-            })
+            window.addEventListener("touchmove", this.touchMoveListener)
+        },
+        removeListeners() {
+            window.removeEventListener("touchmove", this.touchMoveListener)
+        },
+        touchMoveListener(e) {
+            e.preventDefault()  
+            this.threeJsController.setMouse({
+                x: e.changedTouches[0].pageX, 
+                y: e.changedTouches[0].pageY
+            }) 
         },
         startCountdown() {
             this.gameState = 'starting'
@@ -92,6 +96,9 @@ export default {
         })
 
         this.addWindowListeners()
+    },
+    beforeDestroy() {
+        this.removeListeners()
     }
 }
 </script>

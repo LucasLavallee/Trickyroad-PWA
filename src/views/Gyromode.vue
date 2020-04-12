@@ -38,9 +38,13 @@ export default {
     },
     methods: {
         addWindowListeners() {
-            window.addEventListener("devicemotion", (e) => {
-                this.threeJsController.setGyro(e)
-            })
+            window.addEventListener("devicemotion", this.deviceMotionListener)
+        },
+        removeListeners() {
+            window.removeEventListener("devicemotion", this.deviceMotionListener)
+        },
+        deviceMotionListener(e) {
+            this.threeJsController.setGyro(e)
         },
         startCountdown() {
             this.gameState = 'starting'
@@ -76,6 +80,9 @@ export default {
         })
 
         this.addWindowListeners()
+    },
+    beforeDestroy() {
+        this.removeListeners()
     }
 }
 </script>
