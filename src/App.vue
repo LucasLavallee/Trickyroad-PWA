@@ -12,15 +12,35 @@
 <script>
 import NotificationContainer from './components/notification/NotificationContainer'
 import { mapGetters } from 'vuex'
+import store from './store'
 
 export default {
   name: 'App',
   components: {
     NotificationContainer
   },
+  data() {
+    return {
+      audio: null
+    }
+  },
   methods: {
+    playMusic() {
+      const sound = "/music/Thinking_About_The_Universe.mp3"
+      if(sound) {
+        this.audio = new Audio(sound)
+        this.audio.play()
+        this.audio.loop = true
+      }
+    }
   },
   mounted() {
+    this.playMusic()
+
+    store.watch((state) => state.config.sound, (newVal) => {
+      if(newVal) this.audio.muted = false
+      if(!newVal) this.audio.muted = true
+    })
   },
   computed: {
     ...mapGetters([

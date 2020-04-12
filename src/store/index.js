@@ -42,6 +42,9 @@ export default new Vuex.Store({
     },
     SET_ACHIEVEMENTS (state, achievements) {
       state.achievements = achievements
+    },
+    SET_MUSIC (state, mute) {
+      state.config.sound = mute
     }
   },
   actions: {
@@ -59,6 +62,9 @@ export default new Vuex.Store({
     },
     setPushAchievement: (store, needPush) => {
       store.commit('SET_PUSH_ACHIEVEMENT', needPush)
+    },
+    setMusic: (store, mute) => {
+      store.commit('SET_MUSIC', mute)
     }
   },
   getters: {

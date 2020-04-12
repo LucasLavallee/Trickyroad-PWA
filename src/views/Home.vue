@@ -2,8 +2,8 @@
   <div class="home">
     <header>
       <img src="../assets/icons/info.png" alt="info" class="icons icons_top">
-      <img src="../assets/icons/speaker.png" alt="soundOn" class="icons icons_top" v-if="getCurrentConfig.sound">
-      <img src="../assets/icons/mute.png" alt="soundOff" class="iconsicons_top" v-if="!getCurrentConfig.sound">
+      <img src="../assets/icons/speaker.png" alt="soundOn" class="icons icons_top" v-if="getCurrentConfig.sound" @click="setMusic(false)">
+      <img src="../assets/icons/mute.png" alt="soundOff" class="icons icons_top" v-if="!getCurrentConfig.sound" @click="setMusic(true)">
     </header>
     <div id="mainHome">
       <h1>TRICKYROAD</h1>
@@ -72,7 +72,8 @@ export default {
     },
     ...mapActions([
         'setUpdateManager',
-        'setPushAchievement'
+        'setPushAchievement',
+        'setMusic'
     ])
   },
   components: {
