@@ -60,6 +60,16 @@ export default {
     changeVue() {
       this.$router.push(this.nextPage)
     },
+    managePushUpdates() {
+      if(navigator.onLine) {
+        UpdateManager.pushAchievementsUpdate()
+          .then(() => {
+              this.setPushAchievement(false)
+          }).catch((error) => {
+              console.error("Write failed: "+error)
+          })
+      }
+    },
     ...mapActions([
         'setUpdateManager',
         'setPushAchievement'
@@ -68,14 +78,7 @@ export default {
   components: {
   },
   mounted() {
-    if(navigator.onLine) {
-      UpdateManager.pushAchievementsUpdate()
-        .then(() => {
-            this.setPushAchievement(false)
-        }).catch((error) => {
-            console.error("Write failed: "+error)
-        })
-    }
+    this.managePushUpdates()
 
     this.threeJsController = new ThreeJsController(this.$refs.canvas)
     this.threeJsController.init(() => {

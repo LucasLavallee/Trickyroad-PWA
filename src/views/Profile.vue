@@ -16,6 +16,7 @@
         </section>
         <BadgesList 
             :badges="badges"
+            v-if="badges && badges.length != 0"
         />
         <h2>Last scores</h2>
         <Ladder
@@ -28,6 +29,7 @@
 import db from '../../base'
 import BadgesList from '../components/BadgesList'
 import Ladder from '../components/Ladder'
+import { mapGetters } from 'vuex'
 
 export default {
     name: 'profile',
@@ -58,6 +60,12 @@ export default {
             return (playDate.getDate() < 10 ? '0'+ playDate.getDate() : playDate.getDate()) +'/'+ (playDate.getMonth()+1 < 10 ? '0'+(playDate.getMonth()+1) : playDate.getMonth()+1)
         }
     },
+    computed: {
+        ...mapGetters([
+            'getPseudo',
+            'getAchievements'
+        ])
+    },
     created() {
         const user = this.$route.params.user
 
@@ -82,8 +90,9 @@ export default {
                 this.infos = datas
                 this.bestTime = datas.bestScore ? this.parseScore(datas.bestScore.value) : null
                 this.lastPlay = datas.lastGame ? this.parseTime(datas.lastGame) : null
-                this.badges = datas.badges ? datas.badges : []
-            });
+                
+                this.badges = (this.getPseudo === user) ? this.getAchievements : (datas.badges ? datas.badges : [])
+           });
         }
     }
 }

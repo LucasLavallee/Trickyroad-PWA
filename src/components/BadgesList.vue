@@ -5,7 +5,7 @@
             <div class="badgeCategory" v-for="(category, index) in allBadges" :key="index">
                 <h3>{{category.name}}</h3>
                 <div class="badges">
-                    <img :src="`/badges/${badgesDetails[badge].filename}.png`" v-for="(badge, badgeId) in category.badges" :key="badgeId" :class="badges && badges.includes(badge.name) ? 'active' : ''">              
+                    <img :src="`/badges/${badgesDetails[badge].filename}.png`" v-for="(badge, badgeId) in category.badges" :key="badgeId" :class="badges && badges[badge].success ? 'active' : ''">              
                 </div>
             </div>
         </section>
@@ -25,7 +25,6 @@ export default {
         }
     },
     created() {
-        console.log(this.badges)
     }
 }
 </script>
