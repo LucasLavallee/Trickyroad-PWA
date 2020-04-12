@@ -55,7 +55,7 @@ export default {
         },
         startGame() {
             this.gameState = 'playing'
-            this.gameEnd(200,true)
+            this.gameEnd(Math.floor(Math.random() * (250 - 80 + 1)) + 80  ,true)
             this.interval = setInterval(() => {
                 this.currentTime++
                 this.displayedTime = this.parseTime(this.currentTime)

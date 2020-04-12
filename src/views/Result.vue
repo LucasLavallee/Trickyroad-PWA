@@ -152,7 +152,7 @@ export default {
                     })
                 }
 
-                allScore = allScore.sort((a,b) => a.value > b.value)
+                allScore = allScore.sort((a,b) => a.value - b.value)
                 for(let j=0; j<allScore.length; j++) {
                     allScore[j].value = this.parseTime(allScore[j].value)
                     allScore[j].rank = j + 1

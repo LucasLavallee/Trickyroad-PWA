@@ -49,7 +49,7 @@ export default {
                         allScore = allScore.concat(this.users[keys[i]].bestScore)
                 }
 
-                allScore = allScore.sort((a,b) => a.value > b.value)
+                allScore = allScore.sort((a,b) => a.value - b.value)
                 for(let j=0; j<allScore.length; j++) {
                     let date = new Date(0)
                     date.setSeconds(parseInt(allScore[j].value)) // specify value for SECONDS here
